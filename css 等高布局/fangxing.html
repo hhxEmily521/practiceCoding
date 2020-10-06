@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* .box {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .box::after {
+        content: '';
+        display: block;
+        position: relative;
+        background: peru;
+        padding: 50%;
+        z-index: -1;
+    }
+
+    .test {
+        float: left;
+        z-index: 99;
+    }
+
+    .contain {
+        border-left: 200px;
+        background: rebeccapurple;
+        overflow: hidden;
+    }
+
+    .left {
+        float: left;
+        width: 200px;
+    }
+
+    .right {
+        float: left;
+        width: 100%;
+        margin-left: 200px;
+        background: darkgray;
+    }
+
+    .test1 {
+        height: 50px;
+    } */
+
+    /* .container {
+        margin: auto;
+        max-width: 600px;
+        overflow: hidden;
+        display: flex;
+        position: relative;
+    } */
+
+    /* .column-left,
+    .column-right {
+        margin-bottom: -9999px;
+        padding-bottom: 9999px;
+    }
+
+    .column-left {
+        background-color: #34538b;
+    }
+
+    .column-right {
+        background-color: #cd0000;
+    } */
+
+
+    .container {
+        max-width: 600px;
+        display: flex;
+        position: relative;
+        font-size: 0.24rem;
+        border: 1px solid green;
+    }
+
+    .container>div {
+        border: rebeccapurple 1px solid;
+        /* margin: 0.2rem; */
+    }
+
+
+    .text-ellipsis-line {
+        /* 多余内容省略号处理-单行 */
+        display: inline-block;
+        color: #222222;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .blank {
+        position: relative;
+        flex: 1;
+    }
+
+    .tooltips {
+        width: calc(600px - 100%);
+        position: absolute;
+        top: .6rem;
+        right: 100%;
+        opacity: 0;
+        overflow: hidden;
+        border: none;
+        display: inline-block;
+        /* white-space: nowrap; */
+    }
+
+    .text-ellipsis-line:hover+.blank .tooltips {
+        opacity: 1;
+        border: none;
+    }
+</style>
+
+<body>
+    <!-- <div class="box">
+        <div class="test">
+            11111
+        </div>
+    </div> 
+    <div class="contain">
+        <div class="left">
+            <div class="test1">11111</div>
+            <div class="test1">1111</div>
+
+        </div>
+        <div class="right"> 
+            <div class="test1">111</div>
+            <div class="test1">111</div>
+            <div class="test1">111</div>
+            <div class="test1">11</div>
+        </div>
+    </div> -->
+    <!-- <div class="container">
+        <div id="colLeft" class="column-left">
+            <h4>正方观点</h4>
+            <p>观点1</p>
+            <p>观点1</p>
+
+        </div>
+        <div id="colRight" class="column-right">
+            <h4>反方观点</h4>
+            <p>观点1</p>
+            <p>观点1</p>
+            <p>观点1</p>
+            <p>观点1</p>
+
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="text-ellipsis-line">
+            招聘前端工程师，尤其是中高级前端工程师，多余内容省略号处理-单行多余内</div>
+        <div class="blank">
+            <div class="tooltips">
+                招聘前端工程师，尤其是中高级前端工程师，多余内容省略号处理-单行多余内</div>
+        </div>
+
+    </div>
+</body>
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                docEl.style.fontSize = 20 * (clientWidth / 320) + 'px';
+            };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+        if (document.getElementsByClassName('blank')[0].clientWidth!=0){
+            document.getElementsByClassName('tooltips')[0].style.display = "none"
+        }else{
+            document.getElementsByClassName('tooltips')[0].style.display = "block"
+
+        }
+    })(document, window);
+
+</script>
+
+</html>

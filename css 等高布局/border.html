@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <nav>
+          <h3 class="nav"></h3>
+        </nav>
+        <section>
+          <div class="module"></div>
+        </section>
+      </div>
+</body>
+<style>
+    /* 导航背景区border创建 */
+.box { 
+  border-left: 150px solid #333;
+  background-color: #f0f3f9;
+}
+/* 清除浮动影响，不能使用overflow:hidden */
+.box:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* 布局主结构 */
+.box > nav {
+  width: 150px;
+  margin-left: -150px;
+  float: left;
+}
+.box > section {
+    overflow: hidden;
+}
+/* 导航列表和模块列表 */
+.nav {
+    line-height: 40px;
+    color: #fff;
+}
+.module {
+    line-height: 40px;
+}
+</style>
+</html>
